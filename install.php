@@ -53,7 +53,10 @@
     UserID INT(4) NOT NULL,
     OrderStatus  ENUM(PaymentMade, Shipped, Delivered) DEFAULT PaymentMade,
     Orderdate DATETIME,
-    Method ENUM(Delivery, Collection) NOT NULL
+    Method ENUM(Delivery, Collection) NOT NULL,
+    CONSTRAINT fk_User
+    FOREIGN KEY (UserID)
+    REFERENCES tblusers(UserID)
     );
     ");
     $stmt->execute();
@@ -66,7 +69,13 @@
     UserID INT(4) NOT NULL,
     ItemID INT(5) NOT NULL,
     Stars INT(1) NOT NULL CHECK (Stars >= 1 AND Stars <= 5),
-    ReviewText VARCHAR(200)
+    ReviewText VARCHAR(200),
+    CONSTRAINT fk_User
+    FOREIGN KEY (UserID)
+    REFERENCES tblusers(UserID),
+    CONSTRAINT fk_Item
+    FOREIGN KEY (ItemID)
+    REFERENCES tblitem(ItemID)
     );
     ");
     $stmt->execute();
