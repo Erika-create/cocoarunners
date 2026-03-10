@@ -51,9 +51,9 @@
     CREATE TABLE tblorder
     (OrderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     UserID INT(4) NOT NULL,
-    OrderStatus  ENUM(PaymentMade, Shipped, Delivered) DEFAULT PaymentMade,
+    OrderStatus  ENUM('PaymentMade', 'Shipped', 'Delivered') DEFAULT PaymentMade,
     Orderdate DATETIME,
-    Method ENUM(Delivery, Collection) NOT NULL,
+    Method ENUM('Delivery', 'Collection') NOT NULL,
     CONSTRAINT fk_User
     FOREIGN KEY (UserID)
     REFERENCES tblusers(UserID)
