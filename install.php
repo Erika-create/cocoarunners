@@ -53,14 +53,13 @@
     UserID INT(4) NOT NULL,
     OrderStatus  ENUM('PaymentMade', 'Shipped', 'Delivered') DEFAULT PaymentMade,
     Orderdate DATETIME,
-    Method ENUM('Delivery', 'Collection') NOT NULL,
-    CONSTRAINT fk_User
-    FOREIGN KEY (UserID)
-    REFERENCES tblusers(UserID)
+    Method ENUM('Delivery', 'Collection')
     );
     ");
     $stmt->execute();
     echo("tblorder created<br>");
+
+
 
     #create review table
     $stmt=$conn->prepare("DROP TABLE IF EXISTS tblreview;
